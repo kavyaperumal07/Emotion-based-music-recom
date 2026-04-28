@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodTrack | Emotion-Based Recommender</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- face-api.js from CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="bg-gradient" id="bg-gradient"></div>
+    
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading AI Models...</p>
+    </div>
+
+    <header>
+        <h1>MoodTrack AI</h1>
+        <p>Your face tells a story. We provide the soundtrack.</p>
+    </header>
+
+    <main>
+        <!-- Webcam Feed Section -->
+        <section class="webcam-section card">
+            <div id="video-container">
+                <video id="video" autoplay muted playsinline></video>
+                <div class="scanline"></div>
+                <div id="debug-msg" style="position: absolute; bottom: 10px; left: 10px; color: #ffeb3b; font-size: 0.8rem; z-index: 10; background: rgba(0,0,0,0.5); padding: 2px 5px; border-radius: 4px; display: none;"></div>
+            </div>
+            <div class="status-bar">
+                <div class="mood-info">
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 4px;">Detected Mood</p>
+                    <div id="emotion-display" class="emotion-tag">Detecting...</div>
+                </div>
+                <div class="confidence">
+                    <p id="confidence-score" style="font-weight: 600;">--%</p>
+                </div>
+            </div>
+            <button id="retry-cam" style="display: none; margin-top: 10px; padding: 10px; border-radius: 8px; border: none; background: var(--accent-color); color: white; cursor: pointer;">Retry Camera</button>
+        </section>
+
+        <!-- Music Recommendations Section -->
+        <section class="music-section">
+            <div class="card">
+                <h2>Recommended Beats</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">Based on your current vibe</p>
+                
+                <div id="playlist-container" class="playlist-grid">
+                    <!-- Dynamic Content -->
+                    <div class="playlist-card" style="opacity: 0.5; cursor: default;">
+                        <div class="playlist-img"><i class="fa-solid fa-spinner fa-spin"></i></div>
+                        <div class="playlist-info">
+                            <h3>Awaiting Mood...</h3>
+                            <p>Playlists will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="margin: 40px 0; color: var(--text-secondary); font-size: 0.9rem; text-align: center;">
+        <p>&copy; 2026 MoodTrack AI. Built with <i class="fa-solid fa-heart" style="color: var(--angry-color);"></i> by Antigravity</p>
+    </footer>
+</body>
+</html>
